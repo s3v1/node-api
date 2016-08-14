@@ -1,0 +1,26 @@
+sudo: false
+# About language: using node_js, will not execute the before_instal and install sections, and so not let us build on OSX. Using no language works as well, but defaults to ruby and it's default steps
+language: cpp 
+os:
+  - osx
+  - linux
+env:
+  matrix:
+    - TRAVIS_NODE_VERSION="4"
+    - TRAVIS_NODE_VERSION="stable"
+
+before_install:
+  #fetch/update nvm every time
+  - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
+  - source ~/.nvm/nvm.sh
+  - nvm install $TRAVIS_NODE_VERSION
+
+install:
+  - npm install
+
+script:
+  # Output useful info for debugging
+  - node --version
+  # Run tests and lint
+  - npm test
+  - npm run lint

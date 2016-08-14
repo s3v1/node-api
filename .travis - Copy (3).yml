@@ -1,0 +1,21 @@
+# About language: using node_js, will not execute the before_instal and install sections, and so not let us build on OSX. Using no language works as well, but defaults to ruby and it's default steps
+language: cpp 
+os:
+  - osx
+  - linux
+
+before_install:
+  - source bin/installNode.sh
+
+install:
+  - npm install
+
+script:
+  # Output useful info for debugging
+  - node --version
+  # Run tests and lint
+  - npm test
+  - npm run lint
+  
+notifications:
+  email: false

@@ -1,0 +1,23 @@
+#sudo: false
+language: node_js
+node_js:
+  - "stable"
+  - "4"
+ 
+before_install:
+  - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
+  - . ~/.nvm/nvm.sh
+
+install:
+ - echo TRAVIS_OS_NAME=$TRAVIS_OS_NAME
+ - echo NODE_ENV=$NODE_ENV
+# - test $TRAVIS_OS_NAME = "osx" && brew install nvm && source $(brew --prefix nvm)/nvm.sh || test $TRAVIS_OS_NAME = "linux"
+# - test $TRAVIS_OS_NAME = "osx" && brew install nvm && source $(brew --prefix nvm)/nvm.sh || test $TRAVIS_OS_NAME = "linux"
+  
+os:
+  - osx
+  - linux
+
+#matrix:
+#  allow_failures:
+#    - os: osx
