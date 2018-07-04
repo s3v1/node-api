@@ -15,7 +15,9 @@
     "test:coverage": "istanbul cover --dir ./reports/coverage _mocha -- -R list test/unit/**/*.js; istanbul report --root reports/coverage --dir reports/coverage cobertura",
     "ndt": "ndt -v 'major'",
     "lint": "standard",
-    "lint:fix": "standard-format -w"
+    "lint:fix": "standard-format -w",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "pre-commit": [
     "test",
@@ -38,7 +40,8 @@
   "dependencies": {
     "express": "4.14.0",
     "pm2": "2.0.0",
-    "trevor": "1.1.4"
+    "trevor": "1.1.4",
+    "snyk": "^1.88.1"
   },
   "devDependencies": {
     "chai": "3.5.0",
@@ -52,5 +55,6 @@
     "rimraf": "2.5.2",
     "standard": "6.0.7",
     "standard-format": "2.1.1"
-  }
+  },
+  "snyk": true
 }
